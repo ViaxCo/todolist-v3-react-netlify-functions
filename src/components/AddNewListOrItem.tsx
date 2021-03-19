@@ -1,20 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addItem,
-  setListIsLoading,
-  setAdding,
-} from "../redux/features/items/itemsSlice";
+import { addItem, setListIsLoading, setAdding } from "../redux/features/items/itemsSlice";
 import { addList } from "../redux/features/lists/listsSlice";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { AddIcon } from "@chakra-ui/icons";
-import {
-  Flex,
-  FormControl,
-  IconButton,
-  Input,
-  useColorModeValue,
-  Spinner,
-} from "@chakra-ui/react";
+import { Flex, FormControl, IconButton, Input, useColorModeValue, Spinner } from "@chakra-ui/react";
 import { State } from "../redux/store";
 
 type Props = {
@@ -28,8 +17,7 @@ const AddNewListOrItem = ({ customListName }: Props) => {
   const { adding } = useSelector((state: State) => state.items);
 
   // Control the value of the input component
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setValue(e.target.value);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -48,15 +36,7 @@ const AddNewListOrItem = ({ customListName }: Props) => {
   };
 
   return (
-    <Flex
-      as="form"
-      method="post"
-      action={customListName ? `/api/${customListName}` : "/api"}
-      onSubmit={handleSubmit}
-      align="center"
-      minH="70px"
-      ml="10px"
-    >
+    <Flex as="form" method="post" onSubmit={handleSubmit} align="center" minH="70px" ml="10px">
       <FormControl>
         <Input
           textAlign="center"

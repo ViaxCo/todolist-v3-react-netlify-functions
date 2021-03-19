@@ -49,19 +49,15 @@ const itemsSlice = createSlice({
   },
 });
 
-export const getItems = (customListName: string) => async (
-  dispatch: AppDispatch
-) => {
-  const res = await axios.get(`/api/${customListName}`);
+export const getItems = (customListName: string) => async (dispatch: AppDispatch) => {
+  const res = await axios.get(`/api/getItems?name=${customListName}`);
   const { items, listTitle } = res.data;
   dispatch(itemsReceived({ items, listTitle }));
 };
 
-export const addItem = (customListName: string, name: string) => async (
-  dispatch: AppDispatch
-) => {
+export const addItem = (customListName: string, name: string) => async (dispatch: AppDispatch) => {
   const res = await axios.post(
-    `/api/${customListName}`,
+    `/api/addItem?name=${customListName}`,
     { text: name },
     {
       headers: {
@@ -74,11 +70,9 @@ export const addItem = (customListName: string, name: string) => async (
   dispatch(setAdding(false));
 };
 
-export const deleteItem = (customListName: string, id: string) => async (
-  dispatch: AppDispatch
-) => {
+export const deleteItem = (customListName: string, id: string) => async (dispatch: AppDispatch) => {
   dispatch(itemDeleted(id));
-  await axios.delete(`/api/${customListName}/${id}`);
+  await axios.delete(`/api/deleteItem?name=${customListName}&id=${id}`);
 };
 
 export const toggleItemCompleted = (
@@ -87,7 +81,7 @@ export const toggleItemCompleted = (
   index: number,
   checked: boolean
 ) => async (dispatch: AppDispatch) => {
-  const res = await axios.patch(`/api/${customListName}/${id}`, {
+  const res = await axios.patch(`/api/toggle?name=${customListName}&id=${id}`, {
     completed: checked,
   });
   const items: Item[] = res.data.items;

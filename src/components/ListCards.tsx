@@ -21,15 +21,10 @@ const ListCards = ({ customListName }: Props) => {
           ))}
         </AnimatePresence>
       </Route>
-      <Route path="/api/:customListName">
+      <Route path="/:customListName">
         <AnimatePresence>
           {items.map((item, i) => (
-            <ListItemCard
-              key={item._id}
-              item={item}
-              i={i}
-              customListName={customListName}
-            />
+            <ListItemCard key={item._id} item={item} i={i} customListName={customListName} />
           ))}
         </AnimatePresence>
       </Route>

@@ -16,7 +16,7 @@ const Header = () => {
     >
       <Heading as="h1" color="white" p="10px">
         <Switch>
-          <Route path="/api/:customListName">{listTitle}</Route>
+          <Route path="/:customListName">{listTitle}</Route>
           <Route path="/">{today}</Route>
         </Switch>
       </Heading>

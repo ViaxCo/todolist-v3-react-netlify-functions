@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "todolist-v3-react-netlify-functions",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,8 +20,11 @@
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "focus-visible": "^5.2.0",
     "framer-motion": "^3.2.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.12.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -54,6 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4000",
   "homepage": "."
 }

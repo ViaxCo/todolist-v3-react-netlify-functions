@@ -69,16 +69,11 @@ const ListCard = ({ list, i }: Props) => {
         exit="exit"
         custom={i}
       >
-        <Box
-          w={{ base: "82%", md: "83%" }}
-          cursor="pointer"
-          display="flex"
-          alignItems="center"
-        >
+        <Box w={{ base: "82%", md: "83%" }} cursor="pointer" display="flex" alignItems="center">
           {/* Combine react-router-dom Link and @chakra-ui Link props together */}
           <Link
             as={RouterLink}
-            to={{ pathname: `/api/${list.name}` }}
+            to={{ pathname: `/${list.name}` }}
             flex="1"
             textAlign="center"
             borderRadius="5px"

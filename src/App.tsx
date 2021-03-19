@@ -11,11 +11,11 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/api/:customListName">
-          <List />
-        </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/:customListName">
+          <List />
         </Route>
       </Switch>
     </Router>
