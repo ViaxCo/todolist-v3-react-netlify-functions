@@ -1,6 +1,6 @@
 // @ts-nocheck
 const _ = require("lodash");
-const { List } = require("./db/models");
+const knex = require("./db/connectDB");
 const defaultItems = require("./db/defaultItems");
 const errorHandler = require("./utils/errorHandler");
 const init = require("./utils/init");
@@ -10,14 +10,16 @@ exports.handler = async (event, context) => {
   init(event, "GET");
   const name = _.startCase(event.queryStringParameters.name);
   try {
-    const foundList = await List.findOne({ name });
+    const [foundList] = await knex("lists").where({ name });
     if (foundList) {
       return respond(200, { listTitle: foundList.name, items: foundList.items });
     } else {
-      const newList = await List.create({
-        name,
-        items: defaultItems,
-      });
+      const [newList] = await knex("lists")
+        .insert({
+          name,
+          items: JSON.stringify(defaultItems),
+        })
+        .returning("*");
       return respond(201, { listTitle: newList.name, items: newList.items });
     }
   } catch (error) {

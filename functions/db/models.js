@@ -1,17 +1,12 @@
-const mongoose = require("mongoose");
+const knex = require("./connectDB");
 
-// Item schema
-const itemSchema = new mongoose.Schema({
-  task: String,
-  completed: Boolean,
-});
-// List schema
-const listSchema = new mongoose.Schema({
-  name: String,
-  items: [itemSchema],
-});
-
-module.exports = {
-  Item: mongoose.model("Item", itemSchema),
-  List: mongoose.model("List", listSchema),
+module.exports = async () => {
+  const exists = await knex.schema.hasTable("lists");
+  if (!exists) {
+    return knex.schema.createTable("lists", table => {
+      table.increments("_id");
+      table.string("name");
+      table.jsonb("items");
+    });
+  }
 };
