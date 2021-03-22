@@ -1,6 +1,6 @@
 # todolist-v3-react-netlify-functions
 
-This app lets you create various todo lists with their individual items, built using React, Redux, [Netlify Functions](https://www.netlify.com/products/functions/) and MongoDB for the database.
+This app lets you create various todo lists with their individual items, built using React, Redux, [Netlify Functions](https://www.netlify.com/products/functions/) and PostgreSQL for the database.
 
 This app is a clone of [todolist-v3-react](https://github.com/ViaxCo/todolist-v3-react) that used Node.js and Express to create the api endpoints, but instead serverless functions are being used in this case.
 
@@ -21,7 +21,7 @@ npm install
 Create a `.env` file for this environment variable:
 
 ```
-MONGO_URI=
+DATABASE_URL=
 ```
 
 Run the dev server:
