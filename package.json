@@ -60,6 +60,6 @@
   },
   "homepage": ".",
   "devDependencies": {
-    "netlify-cli": "^3.13.4"
+    "netlify-cli": "^14.0.0"
   }
 }
